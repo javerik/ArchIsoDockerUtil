@@ -9,4 +9,13 @@ cd $ATOS_DIR
 pacman-key --init
 pacman-key --populate archlinux
 pacman -Syu --noconfirm
+
+
 mkarchiso -v -w $WORKDIR -o $OUT_DIR $PROFILE_DIR
+# Check the exit status
+if [ $? -eq 1 ]; then
+  echo "mkarchiso failed, might be the bug, try again"
+  mkarchiso -v -w $WORKDIR -o $OUT_DIR $PROFILE_DIR
+fi
+
+
