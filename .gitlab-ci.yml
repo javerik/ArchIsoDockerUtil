@@ -13,6 +13,7 @@ build:test:
     - main
   script:
     - docker build --no-cache -t test_atos_builder .
+    - docker build --no-cache -t test_atos_pkg_builder -f Dockerfile.pkgbuild .
 
 deploy:
   stage: deploy
@@ -21,4 +22,6 @@ deploy:
   script:
     - docker build --no-cache -t dockregistry.javerik.space/builder/linux/atos_builder:latest .
     - docker push dockregistry.javerik.space/builder/linux/atos_builder:latest
+    - docker build --no-cache -t dockregistry.javerik.space/builder/linux/atos_pkg_builder:latest -f Dockerfile.pkgbuild .
+    - docker push dockregistry.javerik.space/builder/linux/atos_pkg_builder:latest
 
