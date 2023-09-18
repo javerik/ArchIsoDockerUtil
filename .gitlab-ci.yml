@@ -7,7 +7,7 @@ stages:
 before_script:
   - echo "$REG_PASSWD" | docker login --username $REG_USER --password-stdin registry.javerik.com
 
- build:test:
+build:test:
   stage: build
   except:
     - main
