@@ -5,7 +5,7 @@ stages:
   - deploy
 
 before_script:
-  - echo "$REG_PASSWD" | docker login --username $REG_USER --password-stdin registry.javerik.com
+  - echo "$REG_PASSWD" | docker login --username $REG_USER --password-stdin dockregistry.javerik.space
 
 build:test:
   stage: build
@@ -19,6 +19,6 @@ deploy:
   only:
     - main
   script:
-    - docker build --no-cache -t registry.javerik.com/builder/linux/atos_builder:latest .
-    - docker push registry.javerik.com/builder/linux/atos_builder:latest
+    - docker build --no-cache -t dockregistry.javerik.space/builder/linux/atos_builder:latest .
+    - docker push dockregistry.javerik.space/builder/linux/atos_builder:latest
 
