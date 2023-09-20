@@ -10,6 +10,6 @@ ENV PATH=$PATH:/root
 # Install partfs
 
 WORKDIR /tmp
-RUN git clone https://github.com/braincorp/partfs.git && cd partfs && make && mv bin/partfs /root/partfs
+RUN git clone https://github.com/braincorp/partfs.git && cd partfs && make && mv build/bin/partfs /root/partfs
 
 ENTRYPOINT [""]
