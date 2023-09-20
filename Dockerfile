@@ -2,9 +2,14 @@ FROM library/archlinux:base-devel-20230910.0.177821
 
 RUN echo 'Server = https://europe.mirror.pkgbuild.com/$repo/os/$arch' > /etc/pacman.d/mirrorlist
 
-RUN pacman-key --init && pacman -Sy archlinux-keyring --noconfirm && pacman -Su --noconfirm  && pacman -S git archiso bash git base-devel --noconfirm
+RUN pacman-key --init && pacman -Sy archlinux-keyring --noconfirm && pacman -Su --noconfirm  && pacman -S git cmake fuse2 archiso bash --noconfirm
 
 COPY build.sh root/build.sh
 ENV PATH=$PATH:/root
+
+# Install partfs
+
+WORKDIR /tmp
+RUN git clone https://github.com/braincorp/partfs.git && cd partfs && make && mv bin/partfs /root/partfs
 
 ENTRYPOINT [""]
