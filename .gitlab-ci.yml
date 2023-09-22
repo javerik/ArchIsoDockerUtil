@@ -20,8 +20,8 @@ deploy:
   only:
     - main
   script:
-    - docker build --no-cache -t dockregistry.javerik.space/builder/linux/atos_builder:latest .
-    - docker push dockregistry.javerik.space/builder/linux/atos_builder:latest
-    - docker build --no-cache -t dockregistry.javerik.space/builder/linux/atos_pkg_builder:latest -f Dockerfile.pkgbuild .
-    - docker push dockregistry.javerik.space/builder/linux/atos_pkg_builder:latest
+    - docker build --no-cache -t ucore/archiso:isobuilder .
+    - docker push ucore/archiso:isobuilder
+    - docker build --no-cache -t ucore/archiso:pkgbuilder -f Dockerfile.pkgbuild .
+    - docker push ucore/archiso:pkgbuilder
 
