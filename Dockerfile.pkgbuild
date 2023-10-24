@@ -1,6 +1,6 @@
 FROM library/archlinux:base-devel-20230910.0.177821
 
-RUN pacman -Syu --noconfirm && pacman -Sy bash cloud-utils --noconfirm && useradd -ms /bin/bash pkgbuilder
+RUN pacman -Syu --noconfirm && pacman -Sy bash cloud-utils gtk3 libxss nss node-gyp yarn --noconfirm && useradd -ms /bin/bash pkgbuilder
 
 WORKDIR /home/pkgbuilder
 
